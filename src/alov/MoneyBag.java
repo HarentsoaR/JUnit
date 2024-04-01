@@ -1,5 +1,6 @@
 package alov;
 
+import java.util.Objects;
 import java.util.Vector;
 
 public class MoneyBag {
@@ -28,4 +29,13 @@ public class MoneyBag {
 	}
 	}
 	}
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        MoneyBag moneyBag = (MoneyBag) obj;
+        return Objects.equals(fMonies, moneyBag.fMonies);
+    }
 	}
