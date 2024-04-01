@@ -35,7 +35,16 @@ public class Money implements IMoney {
         return fAmount == money.fAmount && Objects.equals(fCurrency, money.fCurrency);
     }
 	@Override
-	public IMoney add(IMoney aMoney) {
+	public IMoney add(IMoney m) {
+		return m.addMoney(this);
+		}
+	@Override
+	public IMoney addMoney(Money money) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public IMoney addMoneyBag(MoneyBag moneyBag) {
 		// TODO Auto-generated method stub
 		return null;
 	}

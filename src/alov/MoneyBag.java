@@ -1,5 +1,6 @@
 package alov;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
@@ -13,11 +14,35 @@ public class MoneyBag implements IMoney {
 	appendMoney(m2);
 	}
 	
+	public MoneyBag add(Money money) {
+        List<Money> newMonies = new ArrayList<>(this.monies);
+        newMonies.add(money);
+        return new MoneyBag(newMonies.toArray(new Money[0]));
+    }
+	
 
 	MoneyBag(Money bag[]) {
 	for (int i = 0; i < bag.length; i++)
 	appendMoney(bag[i]);
 	}
+	
+	public MoneyBag(Money f12chf, Money f7usd, Money f7usd2) {
+        this.monies = new ArrayList<>();
+        this.monies.add(f12chf);
+       this.monies.add(f7usd);
+        this.monies.add(f7usd2);
+    }
+
+
+	public MoneyBag(Money f12chf, Money f7usd, Money f14chf, Money f21usd) {
+	    this.monies = new ArrayList<>();
+	    this.monies.add(f12chf);
+	    this.monies.add(f7usd);
+	    this.monies.add(f14chf);
+	    this.monies.add(f21usd);
+	}
+
+
 	private void appendMoney(Money m) {
 	if (fMonies.isEmpty()) {
 	fMonies.add(m);
@@ -45,7 +70,18 @@ public class MoneyBag implements IMoney {
     }
 	
 	@Override
-	public IMoney add(IMoney aMoney) {
+	public IMoney add(IMoney m) {
+		return m.addMoneyBag(this);
+		}
+
+	@Override
+	public IMoney addMoney(Money money) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IMoney addMoneyBag(MoneyBag moneyBag) {
 		// TODO Auto-generated method stub
 		return null;
 	}
