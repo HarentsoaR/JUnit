@@ -1,14 +1,19 @@
 package alov;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 
 public class MoneyBag implements IMoney {
 	private Vector<Money> fMonies = new Vector<Money>();
+	private List<Money> monies;
+	
 	MoneyBag(Money m1, Money m2) {
 	appendMoney(m1);
 	appendMoney(m2);
 	}
+	
+
 	MoneyBag(Money bag[]) {
 	for (int i = 0; i < bag.length; i++)
 	appendMoney(bag[i]);
@@ -38,6 +43,7 @@ public class MoneyBag implements IMoney {
         MoneyBag moneyBag = (MoneyBag) obj;
         return Objects.equals(fMonies, moneyBag.fMonies);
     }
+	
 	@Override
 	public IMoney add(IMoney aMoney) {
 		// TODO Auto-generated method stub
