@@ -3,7 +3,7 @@ package alov;
 import java.util.Objects;
 import java.util.Vector;
 
-public class MoneyBag {
+public class MoneyBag implements IMoney {
 	private Vector<Money> fMonies = new Vector<Money>();
 	MoneyBag(Money m1, Money m2) {
 	appendMoney(m1);
@@ -38,4 +38,9 @@ public class MoneyBag {
         MoneyBag moneyBag = (MoneyBag) obj;
         return Objects.equals(fMonies, moneyBag.fMonies);
     }
+	@Override
+	public IMoney add(IMoney aMoney) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	}

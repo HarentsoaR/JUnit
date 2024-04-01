@@ -3,7 +3,7 @@ package alov;
 import java.util.Objects;
 
 
-public class Money {
+public class Money implements IMoney {
 	
 	private int fAmount;
 	private String fCurrency;
@@ -18,9 +18,12 @@ public class Money {
 	public String currency() {
 	return fCurrency;
 	}
-	public Money add(Money m) {
-	return new Money(amount() + m.amount(), currency());
+	public Object add(Money m) {
+	    if (m.currency().equals(currency()))
+	        return new Money(amount() + m.amount(), currency());
+	    return new MoneyBag(this, m);
 	}
+
 	
 	@Override
     public boolean equals(Object obj) {
@@ -31,4 +34,9 @@ public class Money {
         Money money = (Money) obj;
         return fAmount == money.fAmount && Objects.equals(fCurrency, money.fCurrency);
     }
+	@Override
+	public IMoney add(IMoney aMoney) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	}
