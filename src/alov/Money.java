@@ -1,5 +1,8 @@
 package alov;
 
+import java.util.Objects;
+
+
 public class Money {
 	
 	private int fAmount;
@@ -18,4 +21,14 @@ public class Money {
 	public Money add(Money m) {
 	return new Money(amount() + m.amount(), currency());
 	}
+	
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Money money = (Money) obj;
+        return fAmount == money.fAmount && Objects.equals(fCurrency, money.fCurrency);
+    }
 	}
