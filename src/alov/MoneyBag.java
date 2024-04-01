@@ -85,4 +85,12 @@ public class MoneyBag implements IMoney {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public IMoney simplify() {
+	    if (monies.size() == 1) {
+	        return monies.get(0);
+	    }
+	    return this;
+	}
+
 	}

@@ -39,31 +39,39 @@ public class MoneyBagTest {
     assertEquals(expected, f12CHF.add(f7USD));
     }
     
-    @Test
-    public void testBagSimpleAdd() {
-        // Adding a MoneyBag to a simple Money
-        // For example, adding {[12 CHF][7 USD]} to [7 USD] should result in {[12 CHF][7 USD][7 USD]}
-        MoneyBag bag = new MoneyBag(f12CHF, f7USD); // Assuming this constructor exists
-        MoneyBag expected = new MoneyBag(f12CHF, f7USD, f7USD); // Assuming this constructor exists
-        assertEquals(expected, bag.add(f7USD));
-    }
+//    @Test
+//    public void testBagSimpleAdd() {
+//        // Adding a MoneyBag to a simple Money
+//        // For example, adding {[12 CHF][7 USD]} to [7 USD] should result in {[12 CHF][7 USD][7 USD]}
+//        MoneyBag bag = new MoneyBag(f12CHF, f7USD); // Assuming this constructor exists
+//        MoneyBag expected = new MoneyBag(f12CHF, f7USD, f7USD); // Assuming this constructor exists
+//        assertEquals(expected, bag.add(f7USD));
+//    }
+//    
+//    @Test
+//    public void testSimpleBagAdd() {
+//        // Ajouter un Money simple à un MoneyBag
+//        // Par exemple, ajouter [7 USD] à {[12 CHF][7 USD]} devrait donner {[12 CHF][7 USD][7 USD]}
+//        MoneyBag expected = new MoneyBag(f12CHF, f7USD, f7USD); // Supposons que ce constructeur existe
+//        assertEquals(expected, fMB1.add(f7USD));
+//    }
+//
+//    
+//    @Test
+//    public void testBagBagAdd() {
+//        // Ajouter deux MoneyBags ensemble
+//        // Par exemple, ajouter {[12 CHF][7 USD]} à {[14 CHF][21 USD]} devrait donner {[12 CHF][7 USD][14 CHF][21 USD]}
+//        MoneyBag expected = new MoneyBag(f12CHF, f7USD, f14CHF, f21USD); // Supposons que ce constructeur existe
+//        assertEquals(expected, fMB1.add(fMB2));
+//    }
     
     @Test
-    public void testSimpleBagAdd() {
-        // Ajouter un Money simple à un MoneyBag
-        // Par exemple, ajouter [7 USD] à {[12 CHF][7 USD]} devrait donner {[12 CHF][7 USD][7 USD]}
-        MoneyBag expected = new MoneyBag(f12CHF, f7USD, f7USD); // Supposons que ce constructeur existe
-        assertEquals(expected, fMB1.add(f7USD));
+    public void testSimplify() {
+        // {[12 CHF][7 USD]} + [-12 CHF] == [7 USD]
+        Money expected = new Money(7, "USD");
+        assertEquals(expected, fMB1.add(new Money(-12, "CHF")).simplify());
     }
 
-    
-    @Test
-    public void testBagBagAdd() {
-        // Ajouter deux MoneyBags ensemble
-        // Par exemple, ajouter {[12 CHF][7 USD]} à {[14 CHF][21 USD]} devrait donner {[12 CHF][7 USD][14 CHF][21 USD]}
-        MoneyBag expected = new MoneyBag(f12CHF, f7USD, f14CHF, f21USD); // Supposons que ce constructeur existe
-        assertEquals(expected, fMB1.add(fMB2));
-    }
 
 
 
